@@ -3,12 +3,13 @@
 filtered_logger.py
 """
 
+
 from typing import List
 import re
 
 
-def filter_datum(fields: List[int], redaction: str,
-                 message: str, separator: str) -> str:
+def filter_datum(fields: List[str], redaction: str, message: str,
+                 separator: str) -> str:
     """ Replacing """
     for f in fields:
         message = re.sub(rf"{f}=(.*?)\{separator}",
