@@ -30,10 +30,9 @@ class Auth:
         """
         verify if the authorization is present
         """
-        if request or request.headers.get("Authorization") is None:
+        if request is None:
             return None
-        else:
-            return request.headers.get('Authorization')
+        return request.headers.get('Authorization')
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
