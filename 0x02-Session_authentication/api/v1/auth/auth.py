@@ -7,6 +7,7 @@ Auth class
 from flask import request
 from typing import List, TypeVar
 from api.v1.views import User
+from os import getenv
 
 
 class Auth:
