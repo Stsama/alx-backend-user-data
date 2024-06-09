@@ -54,3 +54,11 @@ class Auth:
         verified who is the current_user
         """
         return None
+
+    def session_cookie(self, request=None):
+        """
+        Session cookie
+        """
+        if request:
+            session_name = getenv("SESSION_NAME")
+            return request.cookies.get(session_name, None)
