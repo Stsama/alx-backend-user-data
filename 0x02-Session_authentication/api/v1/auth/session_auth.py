@@ -6,6 +6,8 @@ Empty session
 
 from api.v1.auth.auth import Auth
 import uuid
+from models.user import User
+from typing import TypeVar
 
 
 class SessionAuth(Auth):
@@ -31,3 +33,13 @@ class SessionAuth(Auth):
         if not session_id or type(session_id) != str:
             return
         return SessionAuth.user_id_by_session_id.get(session_id, None)
+
+    def current_user(self, request=None):
+        """
+        Use Session ID for identifying a User
+        """
+        if request:
+            session_cookie = self.session_cookie(request)
+            if session_cookie:
+                user_id = self.user_id_for_session_id(session_cookie)
+                return User.get(user_id)
