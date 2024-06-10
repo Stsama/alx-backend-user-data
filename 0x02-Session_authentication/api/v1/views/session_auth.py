@@ -5,9 +5,10 @@ from api.v1.views import app_views
 from flask import abort, jsonify, request
 from models.user import User
 from os import getenv
+from api.v1.app import app
 
 
-@app.route('/auth_session/login', method=['GET'], strict_flashes=False)
+@app.route('/auth_session/login', methods=['GET'], strict_slashes=False)
 def login():
     """ POST /auth_session/login
     Return
