@@ -25,7 +25,7 @@ elif getenv('AUTH_TYPE') == 'session_auth':
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """
     handler before_request
     """
