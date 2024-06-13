@@ -69,4 +69,4 @@ class DB:
             if k not in VALID_FIELDS:
                 raise ValueError
             setattr(user, k, v)
-            session.commit()
+        session.commit()
