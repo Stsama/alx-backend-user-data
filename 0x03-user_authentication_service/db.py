@@ -60,8 +60,9 @@ class DB:
         except Exception:
             raise NoResultFound
 
-    def update_user(self, user_id, **kwargs):
+    def update_user(self, user_id: int, **kwargs) -> None:
         """
+        update user
         """
         session = self._session
         user = self.find_user_by(id=user_id)
