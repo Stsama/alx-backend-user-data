@@ -11,6 +11,10 @@ from user import Base, User
 from typing import TypeVar
 
 
+VALID_FIELDS = ['id', 'email', 'hashed_password', 'session_id',
+                'reset_token']
+
+
 class DB:
     """
     DB class.
@@ -44,3 +48,14 @@ class DB:
         session.add(user)
         session.commit()
         return user
+
+    def find_user_by(self, **kwargs) -> User:
+        """
+        """
+        if not kwargs or any(x not in VALID_FIELDS for x in kwargs):
+            raise InvalidRequestError
+        session = self._session
+        try:
+            return session.query(User).filter_by(**kwargs).one()
+        except Exception:
+            raise NoResultFound
