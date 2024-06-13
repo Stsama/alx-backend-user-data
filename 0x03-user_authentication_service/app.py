@@ -10,12 +10,12 @@ from flask import Flask, jsonify
 app = Flask(__name__)
 
 
-@app.route("/",methods=[GET], strict_slashes=False)
+@app.route("/", methods=['GET'], strict_slashes=False)
 def hello_world() -> str:
     """
     return a JSON payload of the form
     """
-    return jsonify({"message": "Bienvenue"}), 200
+    return jsonify({"message": "Bienvenue"})
 
 
 if __name__ == "__main__":
